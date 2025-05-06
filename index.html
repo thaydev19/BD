@@ -7,7 +7,7 @@
 
     <!-- Google Fonts -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Lao&family=Poppins:wght@400;600&family=Great+Vibes&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Noto+Serif+Lao&family=Poppins:wght@400;600&family=Great+Vibes&display=swap"
       rel="stylesheet"
     />
 
@@ -28,7 +28,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: "Poppins", sans-serif;
+        font-family: "Poppins", sans-serif, "Noto Serif Lao", serif;
         overflow: hidden;
         position: relative;
       }
@@ -103,14 +103,11 @@
         word-break: break-word;
         line-height: 2;
         text-shadow: 2px 2px 6px #fff;
+        font-family: "Noto Serif Lao", serif;
       }
 
       .poppins {
         font-family: "Poppins", sans-serif;
-      }
-
-      .lao {
-        font-family: "Noto Sans Lao", sans-serif;
       }
 
       .greatvibes {
@@ -155,7 +152,7 @@
         background-color: #880e4f;
         color: white;
         font-size: 1.4rem;
-        font-family: "Noto Sans Lao", sans-serif;
+        font-family: "Noto Serif Lao", serif;
         border: none;
         border-radius: 30px;
         cursor: pointer;
@@ -234,10 +231,9 @@
     </audio>
 
     <div class="card">
-      <div id="text" class="poppins"></div>
+      <div id="text"></div>
     </div>
 
-    <!-- Move Next button outside of the card -->
     <button id="nextButton" class="btn">ກົດນີ້ໆ ເດີຄົນງາມ➡️</button>
     <button id="finalButton" class="btn">ກົດນີ້ໆ ເບິ່ງຄົນງາມ ➡️</button>
 
@@ -296,18 +292,16 @@
       }
 
       // Show first message
-      typeText("Happy birthday Nokkee 💕💕", "poppins", () => {
+      typeText("Happy birthday Nokkee ❤️", "poppins", () => {
         nextButton.style.display = "inline-block";
         nextButton.onclick = () => {
-          // Next phase of the message
           nextButton.style.display = "none";
           typeText(
-            "Happy Birthday 💕💕 ວັນເກີດປີນີ້ 24 ປີຖ້ວນ ຂໍໃຫ້ມີແຕ່ຄວາມສຸກ, ສຸຂະພາບແຂງແຮງ ບໍ່ເຈັບບໍ່ໄຂ້ ປີນີ້ຮຽນປີທີ 2 ແລ້ວ ຂໍໃຫ້ອົດທົນ ຕັ້ງໃຈຮຽນ ຮຽນເກັ່ງເສັງໄດ້ ຄະແນນສູງສູງ ຂໍໃຫ້ຢູ່ນຳກັນດົນດົນເດີ ຈຸບຈຸບ, ຮັກເພິ່ນເດີຄົນງາມ 💕💕 I always support you 😘",
+            "Happy Birthday ❤️ ວັນເກີດປີນີ້ 24 ປີຖ້ວນ ຂໍໃຫ້ມີແຕ່ຄວາມສຸກ, ສຸຂະພາບແຂງແຮງ ບໍ່ເຈັບບໍ່ໄຂ້ ປີນີ້ຮຽນປີທີ 2 ແລ້ວ ຂໍໃຫ້ອົດທົນ ຕັ້ງໃຈຮຽນ ຮຽນເກັ່ງເສັງໄດ້ ຄະແນນສູງສູງ ຂໍໃຫ້ຢູ່ນຳກັນດົນດົນເດີ ຈຸບຈຸບ, ຮັກເພິ່ນເດີຄົນງາມ ❤️ I always support you ❤️",
             "lao",
             () => {
               finalButton.style.display = "inline-block";
               finalButton.onclick = () => {
-                // Hide everything and show image
                 textElement.style.display = "none";
                 finalButton.style.display = "none";
                 imageSection.style.display = "block";
