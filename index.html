@@ -28,7 +28,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        font-family: "Poppins", sans-serif, "Noto Serif Lao", serif;
+        font-family: "Poppins", sans-serif;
         overflow: hidden;
         position: relative;
       }
@@ -103,11 +103,14 @@
         word-break: break-word;
         line-height: 2;
         text-shadow: 2px 2px 6px #fff;
-        font-family: "Noto Serif Lao", serif;
       }
 
       .poppins {
         font-family: "Poppins", sans-serif;
+      }
+
+      .lao {
+        font-family: "Noto Sans Lao", sans-serif;
       }
 
       .greatvibes {
@@ -152,7 +155,7 @@
         background-color: #880e4f;
         color: white;
         font-size: 1.4rem;
-        font-family: "Noto Serif Lao", serif;
+        font-family: "Noto Sans Lao", sans-serif;
         border: none;
         border-radius: 30px;
         cursor: pointer;
@@ -231,9 +234,10 @@
     </audio>
 
     <div class="card">
-      <div id="text"></div>
+      <div id="text" class="poppins"></div>
     </div>
 
+    <!-- Move Next button outside of the card -->
     <button id="nextButton" class="btn">ກົດນີ້ໆ ເດີຄົນງາມ➡️</button>
     <button id="finalButton" class="btn">ກົດນີ້ໆ ເບິ່ງຄົນງາມ ➡️</button>
 
@@ -268,43 +272,46 @@
 
       createBubbles();
 
+      // Function to handle typewriter effect for text
       function typeText(text, fontClass, callback) {
         let i = 0;
-        const speed = 100;
+        const speed = 100; // speed of typing
 
-        textElement.className = fontClass;
-        textElement.innerHTML = "";
+        textElement.className = fontClass; // Set font class (for styling)
 
+        // Clear current content before typing
+        textElement.textContent = "";
+
+        // Function to simulate typing effect
         function type() {
           if (i < text.length) {
-            const span = document.createElement("span");
-            span.textContent = text.charAt(i);
-            span.classList.add("fade-in");
-            textElement.appendChild(span);
+            // Append one character at a time
+            textElement.textContent += text.charAt(i);
             i++;
             setTimeout(type, speed);
           } else {
+            // Call callback after typing is finished
             if (callback) setTimeout(callback, 2000);
           }
         }
 
-        type();
+        type(); // Start typing
       }
 
-      // Show first message
-      typeText("Happy birthday Nokkee ❤️", "poppins", () => {
-        nextButton.style.display = "inline-block";
+      // Call the typeText function with the message
+      typeText("Happy birthday Nokkee 🩷🎂", "poppins", () => {
+        nextButton.style.display = "inline-block"; // Show the "Next" button
         nextButton.onclick = () => {
-          nextButton.style.display = "none";
+          nextButton.style.display = "none"; // Hide the button after click
           typeText(
-            "Happy Birthday ❤️ ວັນເກີດປີນີ້ 24 ປີຖ້ວນ ຂໍໃຫ້ມີແຕ່ຄວາມສຸກ, ສຸຂະພາບແຂງແຮງ ບໍ່ເຈັບບໍ່ໄຂ້ ປີນີ້ຮຽນປີທີ 2 ແລ້ວ ຂໍໃຫ້ອົດທົນ ຕັ້ງໃຈຮຽນ ຮຽນເກັ່ງເສັງໄດ້ ຄະແນນສູງສູງ ຂໍໃຫ້ຢູ່ນຳກັນດົນດົນເດີ ຈຸບຈຸບ, ຮັກເພິ່ນເດີຄົນງາມ ❤️ I always support you ❤️",
+            "Happy Birthday 🩷🎂 ວັນເກີດປີນີ້ 24 ປີຖ້ວນ ຂໍໃຫ້ມີແຕ່ຄວາມສຸກ, ສຸຂະພາບແຂງແຮງ ບໍ່ເຈັບບໍ່ໄຂ້ ປີນີ້ຮຽນປີທີ 2 ແລ້ວ ຂໍໃຫ້ອົດທົນ ຕັ້ງໃຈຮຽນ ຮຽນເກັ່ງເສັງໄດເດີ ຄະແນນສູງສູງ ຂໍໃຫ້ຢູ່ນຳກັນດົນດົນເດີ ຈຸບຈຸບ, ຮັກເພິ່ນເດີຄົນງາມ ❤️ I always support you ❤️",
             "lao",
             () => {
-              finalButton.style.display = "inline-block";
+              finalButton.style.display = "inline-block"; // Show final button
               finalButton.onclick = () => {
-                textElement.style.display = "none";
-                finalButton.style.display = "none";
-                imageSection.style.display = "block";
+                textElement.style.display = "none"; // Hide text
+                finalButton.style.display = "none"; // Hide final button
+                imageSection.style.display = "block"; // Show image
               };
             }
           );
